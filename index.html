@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css'>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<header>
+
+		<div id="header">
+			<a href="#default" class="logo">Header</a>
+			<div id="header-right">
+				<a class="active" href="index.html">Sign up</a>
+				<a href="profile.html">profile</a>
+			</div>
+		</div>
+			</header>
+<div class="wrapper">
+
+	<div class="header">
+		<h2>Signup</h2>
+	</div>
+	<form id="form" class="form">
+		<div class="form-control">
+			<input type="text" placeholder="Full  name" id="name" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-times-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<input type="email" placeholder=" Email" id="email" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-times-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<input type="password" placeholder=" Password" id="password"/>
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-times-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<input type="password" placeholder="Confirm Password" id="confirm"/>
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-times-circle"></i>
+			<small>Error message</small>
+		</div>
+		<button onclick="saveData()">Submit</button>
+	</form>
+</div>
+  <script" src="script.js">
+  function saveData(){
+    let email2=document.getElementById("email").value
+    let psw=document.getElementById("password").value
+ 
+let userRecords = new Array()
+userRecords=JSON.parse(localStorage.getItem('users'))?JSON.parse(localStorage.getItem('users')):[]
+
+if(userRecords.some((v)=>{return v.email==email2 && v.password==psw}))
+{
+    alert("logged in")
+	let currentUser = userRecords.filter((v)=>{return v.email==email2 && v.password==psw})
+	localStorage.setItem("user", currentUser.name2)
+	localStorage.setItem("user", currentUser.email2)
+	window.location.href="profile.html"
+}
+
+else{
+      alert("login failed")
+}
+
+
+
+}
+
+</script>
+</body>
+</html>
